@@ -13,19 +13,24 @@ class ProductController < ApplicationController
   end
 
   def create
-    @product = Product.new(params[:product])
-    @product.save
+    @product = Product.new(product_params)
 
-    redirect_to product_path(@product)
+    if @product.save
+      redirect_to product_path(@product)
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
-    @product.update(params[:product])
-
-    redirect_to product_path(@product)
+    if @product.update(product_params)
+      redirect_to product_path(@product)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -37,7 +42,7 @@ class ProductController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit()
+    params.require(:product).permit(:name, :description, :price, :stock, :availability, :gender_id, :category_id)
   end
 
   def set_product

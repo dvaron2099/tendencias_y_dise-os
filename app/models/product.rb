@@ -7,4 +7,12 @@ class Product < ApplicationRecord
 
   has_many :product_colors
   has_many :colors, through: :product_colors
+
+  before_validation :update_availability
+
+  private
+
+  def update_availability
+    self.availability = stock > 0
+  end
 end

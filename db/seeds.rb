@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+require "open-uri"
+
+puts "Reseteando base de datos"
+
+User.destroy_all
+
+puts "Creando Usuario Administrador"
+
+user = User.create(
+  email: 'admin@gmail.com',
+  password: "123456",
+)
