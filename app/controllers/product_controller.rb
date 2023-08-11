@@ -42,7 +42,18 @@ class ProductController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :stock, :availability, :gender_id, :category_id, photos: [])
+    params.require(:product).permit(
+      :name,
+      :description,
+      :price,
+      :stock,
+      :availability,
+      :gender_id,
+      :category_id,
+      photos: [],
+      color_ids: [],   # Para permitir múltiples colores asociados
+      size_ids: []     # Para permitir múltiples tallas asociadas
+    )
   end
 
   def set_product
