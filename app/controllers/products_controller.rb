@@ -1,8 +1,15 @@
-class ProductController < ApplicationController
+class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    @lady = Gender.find_by(name: 'Dama')
+    @gentleman = Gender.find_by(name: 'Caballero')
+
+    if params[:gender] == 'lady'
+      @products = Product.where(gender_id: @lady.id)
+    elsif params[:gender] == 'gentleman'
+      @products = Product.where(gender_id: @gentleman.id)
+    end
   end
 
   def show

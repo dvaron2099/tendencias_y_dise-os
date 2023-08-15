@@ -1,0 +1,13 @@
+<div class="footer">
+  <ul class="copyright d-flex">
+    <li><a href="https://www.instagram.com/valenhernandez_z/"><i class="fab fa-instagram"></i></a></li>
+    <li>COPYRIGHT ©2023. Todos los Derechos Reservados.</li>
+  </ul>
+  <div class="user">
+    <% if user_signed_in? %>
+      <%= link_to "Cerrar Sesión", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+    <% else %>
+      <%= link_to "¿Eres propietario?", new_user_session_path, class: "nav-link" %>
+    <% end %>
+  </div>
+</div>

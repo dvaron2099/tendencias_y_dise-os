@@ -1,0 +1,13 @@
+<div class="nav">
+  <div class="image p-3">
+    <%= image_tag "logo_negro.png" %>
+  </div>
+  <div class="gender d-flex">
+    <%= link_to products_path(gender: 'lady'), class: "link-lady m-3 text-decoration-none" do %>
+      <p>DAMA</p>
+    <% end %>
+    <%= link_to products_path(gender: 'gentleman'), class: "link-gentleman m-3 text-decoration-none" do %>
+      <p>CABALLERO</p>
+    <% end %>
+  </div>
+</div>

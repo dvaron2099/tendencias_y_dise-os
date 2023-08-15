@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TendenciasYDiseOs</title>
+    <title>Tendencias Y Diseños</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="icon" href="<%= asset_path('T&D.ico') %>">
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render "shared/navbar" %>
     <%= yield %>
+    <%= render "shared/flashes" %>
+    <%= render "shared/footer" %>
   </body>
 </html>

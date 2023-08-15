@@ -1,0 +1,6 @@
+<% @products.each do |product| %>
+  <%= product.name %>
+  <%= link_to product_path(product), class: "text-decoration-none" do %>
+    <p>entrando, prueba</p>
+  <% end %>
+<% end %>
