@@ -1,1 +1,82 @@
-<%= @product.name %>
+<div class="ruta m-3">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to "Inicio", root_path, class: "text-decoration-none text-black" %></li>
+      <% if @product.gender.name == 'Dama' %>
+        <li class="breadcrumb-item"><%= link_to "Productos", products_path(gender: 'lady'), class: "text-decoration-none text-black" %></li>
+      <% elsif @product.gender.name == 'Caballero' %>
+        <li class="breadcrumb-item"><%= link_to "Productos", products_path(gender: 'gentleman'), class: "text-decoration-none text-black" %></li>
+      <% end %>
+      <li class="breadcrumb-item active" aria-current="page"><%= @product.name %></li>
+    </ol>
+  </nav>
+</div>
+<div class="container container-product d-flex justify-content-center align-items-center">
+  <div class="row product">
+    <div class="col-7 mt-2">
+      <div class="m-3">
+        <div id="carouselExample" class="carousel slide carousel-css">
+            <div class="carousel-inner">
+              <% if @product.photos.empty? %>
+                <div class="carousel-item active" style="transition: transform .6s ease-in-out">
+                  <%= image_tag "logo_negro.png", class: "d-block mx-auto", style: "max-width: 300px; max-height: 300px;", alt: "Producto sin imagen" %>
+                </div>
+              <% else %>
+                <% @product.photos.each_with_index do |photo, index| %>
+                  <div class="carousel-item <%= 'active' if index.zero? %>" style="transition: transform .6s ease-in-out">
+                    <%= cl_image_tag photo.url, class: "d-block mx-auto", style: "max-width: 300px; max-height: 300px;", alt: "Imagen de producto" %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="d-flex justify-content-between">
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-5 information">
+      <div class="m-3">
+        <h5 class="card-title mb-1"><strong><%= @product.name %> </strong></h5>
+        <hr class="border-dark">
+        <p class="card-text mb-2"><%= @product.description %></p>
+        <p class="card-text mb-2"><%= number_to_currency(@product.price, unit: '$', format: '%u%n') %></p>
+        <p class="card-text mb-2"><%= @product.category.category_type %></p>
+        <p class="card-text mb-2">Disponible en las siguientes Tallas</p>
+        <div class="card-text mb-2">
+          <% @product.sizes.each do |size| %>
+            <span class="badge bg-secondary me-2"><%= size.measure %></span>
+          <% end %>
+        </div>
+        <p class="card-text mb-2">Disponible en los siguientes colores</p>
+        <div class="card-text mb-2">
+          <% @product.colors.each do |color| %>
+            <% if color.name == "Blanco" %>
+              <span class="badge bg-color me-2" style="background-color: <%= color.hex_code %>; color: black;">
+                <%= color.name %>
+              </span>
+            <% else %>
+              <span class="badge bg-color me-2" style="background-color: <%= color.hex_code %>; color: #ffffff;">
+                <%= color.name %>
+              </span>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="whatsaap">
+  <a href="https://api.whatsapp.com/send?phone=573232313535&text=<%= CGI.escape("#{product_url(@product)}
+¡Hola! Estoy interesado en el producto: #{@product.name}.
+Puedes brindarme más información?") %>" target="_blank">
+    <i class="fa-brands fa-whatsapp" style="color: black; font-size: 36px;"></i>
+  </a>
+</div>

@@ -1,6 +1,26 @@
-<% @products.each do |product| %>
-  <%= product.name %>
-  <%= link_to product_path(product), class: "text-decoration-none" do %>
-    <p>entrando, prueba</p>
+<div class="ruta m-3">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to "Inicio", root_path, class: "text-decoration-none text-black" %></li>
+      <li class="breadcrumb-item active" aria-current="page">Productos</li>
+    </ol>
+  </nav>
+</div>
+<div class="products d-flex flex-wrap justify-content-center">
+  <% @products.each do |product| %>
+    <div class="card" style="width: 18rem;">
+      <a href="<%= product_path(product) %>">
+        <% if product.photos.any? %>
+          <%= cl_image_tag product.photos.first.url, class: "card-img-top product-image" %>
+        <% else %>
+          <!-- Aquí puedes mostrar una imagen predeterminada o algún mensaje indicando que no hay imagen -->
+          <%= image_tag "logo_negro.png", class: "card-img-top product-image" %>
+        <% end %>
+      </a>
+      <div class="card-body">
+        <h6 class="card-text"><strong><%= product.name %></strong></h6>
+        <div class="price"><%= number_to_currency(product.price, unit: '$', format: '%u%n') %></div>
+      </div>
+    </div>
   <% end %>
-<% end %>
+</div>

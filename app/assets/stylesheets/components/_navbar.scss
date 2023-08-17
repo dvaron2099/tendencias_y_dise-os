@@ -17,31 +17,25 @@
   position: relative;
 }
 
-/* Estilo de la línea de abajo */
-.link-lady::after,
-.link-gentleman::after {
-  content: '';
-  position: absolute;
-  bottom: -2px; /* Ajusta la posición vertical de la línea */
-  left: 100%; /* La línea comienza desde la derecha */
-  width: 0;
-  height: 2px; /* Ajusta el grosor de la línea */
-  background-color: #000; /* Color de la línea */
-  transition: width 0.3s ease-in-out; /* Transición suave al crecer */
-  opacity: 0; /* Inicialmente, la línea está oculta */
-}
-
 /* Cambios al hacer hover */
 .link-lady:hover::after,
 .link-gentleman:hover::after {
   width: 100%; /* La línea crece al 100% */
   left: 0; /* La línea se desplaza a la izquierda */
   opacity: 1; /* La línea se vuelve visible */
+
 }
 
-/* Cambios al quitar el mouse */
+/* Estilo de la línea de abajo */
 .link-lady::after,
 .link-gentleman::after {
-  width: 0; /* La línea se vuelve invisible */
-  opacity: 0; /* La línea está oculta */
+  content: '';
+  position: absolute;
+  bottom: -2px; /* Ajusta la posición vertical de la línea */
+  left: 0; /* Ajusta la posición horizontal inicial de la línea */
+  width: 0;
+  height: 2px; /* Ajusta el grosor de la línea */
+  background-color: #000; /* Color de la línea */
+  transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Transiciones suaves */
+  opacity: 0; /* Inicialmente, la línea está oculta */
 }

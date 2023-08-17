@@ -60,7 +60,7 @@ grey = Color.create(
 puts "Azul claro"
 light_blue = Color.create(
   name: "Azul claro",
-  hex_code: "#55759c"
+  hex_code: "#139ad3"
 )
 puts "Negro"
 black = Color.create(
@@ -70,7 +70,7 @@ black = Color.create(
 puts "Blanco"
 white = Color.create(
   name: "Blanco",
-  hex_code: "#fc0000"
+  hex_code: "#ffffff"
 )
 puts "Morado"
 purple = Color.create(
@@ -85,7 +85,7 @@ green = Color.create(
 puts "Azul oscuro"
 dark_blue = Color.create(
   name: "Azul oscuro",
-  hex_code: "#0a0d20"
+  hex_code: "#174a8b"
 )
 puts "Rosado"
 pink = Color.create(
