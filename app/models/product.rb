@@ -8,12 +8,4 @@ class Product < ApplicationRecord
   has_many :product_colors, dependent: :destroy
   has_many :colors, through: :product_colors
   has_many_attached :photos
-
-  before_validation :update_availability
-
-  private
-
-  def update_availability
-    self.availability = stock > 0
-  end
 end

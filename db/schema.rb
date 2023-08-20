@@ -44,8 +44,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_054117) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category_type"
+    t.bigint "gender_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["gender_id"], name: "index_categories_on_gender_id"
   end
 
   create_table "colors", force: :cascade do |t|
@@ -83,8 +85,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_054117) do
     t.string "name"
     t.text "description"
     t.integer "price"
-    t.integer "stock"
-    t.boolean "availability"
+    t.integer "ref"
+    t.string "availability"
     t.bigint "gender_id", null: false
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
@@ -113,6 +115,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_054117) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "categories", "genders"
   add_foreign_key "product_colors", "colors"
   add_foreign_key "product_colors", "products"
   add_foreign_key "product_sizes", "products"
