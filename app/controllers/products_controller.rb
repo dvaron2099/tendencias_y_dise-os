@@ -1,19 +1,34 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+  # def index
+  #   # Encuentra los géneros 'Dama' y 'Caballero'
+  #   @lady = Gender.find_by(name: 'Dama')
+  #   @gentleman = Gender.find_by(name: 'Caballero')
+
+  #   # Filtrar los productos según el parámetro 'gender'
+  #   if params[:gender] == 'lady'
+  #     @products = Product.where(gender: @lady)  # Filtra por el género 'Dama'
+  #     @selected_gender = @lady  # Marca 'Dama' como género seleccionado
+  #   elsif params[:gender] == 'gentleman'
+  #     @products = Product.where(gender: @gentleman)  # Filtra por el género 'Caballero'
+  #     @selected_gender = @gentleman  # Marca 'Caballero' como género seleccionado
+  #   end
+  # end
+
   def index
-    # Encuentra los géneros 'Dama' y 'Caballero'
     @lady = Gender.find_by(name: 'Dama')
     @gentleman = Gender.find_by(name: 'Caballero')
 
-    # Filtrar los productos según el parámetro 'gender'
     if params[:gender] == 'lady'
-      @products = Product.where(gender: @lady)  # Filtra por el género 'Dama'
-      @selected_gender = @lady  # Marca 'Dama' como género seleccionado
+      @products = Product.where(gender: @lady)
+      @selected_gender = @lady
     elsif params[:gender] == 'gentleman'
-      @products = Product.where(gender: @gentleman)  # Filtra por el género 'Caballero'
-      @selected_gender = @gentleman  # Marca 'Caballero' como género seleccionado
+      @products = Product.where(gender: @gentleman)
+      @selected_gender = @gentleman
     end
+
+    @categories = @selected_gender.categories.distinct
   end
 
 

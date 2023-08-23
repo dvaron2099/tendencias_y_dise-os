@@ -1,0 +1,17 @@
+.categories-bar .filter {
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 7px;
+  border: 1px solid #ddd;
+  text-align: center; /* Agrega esta línea para centrar el texto */
+}
+
+
+.categories-bar .filter:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+
+}
+
+.categories-bar .filter:active {
+  background-color: rgba(0, 0, 0, 0.3);
+}

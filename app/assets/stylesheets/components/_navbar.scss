@@ -1,5 +1,13 @@
-.nav {
+.sign-out {
   background: $white;
+}
+
+.sign-in {
+  background: rgb(0, 0, 0);
+}
+
+.sign-in .gender {
+  background: rgb(0, 0, 0);
 }
 
 .nav img {
@@ -38,4 +46,8 @@
   background-color: #000; /* Color de la línea */
   transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Transiciones suaves */
   opacity: 0; /* Inicialmente, la línea está oculta */
+}
+
+.sign-in .gender {
+  background: rgb(255, 255, 255);
 }

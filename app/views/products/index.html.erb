@@ -6,14 +6,23 @@
     </ol>
   </nav>
 </div>
+
+<div class="categories-bar justify-content-center">
+  <ul class="d-flex filter-list list-unstyled flex-wrap justify-content-center">
+    <% @categories.each do |category| %>
+      <li class="filter m-1" onclick="categoryFilter('<%= category.category_type %>')"><%= category.category_type %></li>
+    <% end %>
+    <li class="filter m-1" onclick="categoryFilter('all')">Todos los Productos</li>
+  </ul>
+</div>
+
 <div class="products d-flex flex-wrap justify-content-center">
   <% @products.each do |product| %>
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 18rem;" data-categories="<%= product.category.category_type %>">
       <a href="<%= product_path(product) %>">
         <% if product.photos.any? %>
           <%= cl_image_tag product.photos.first.url, class: "card-img-top product-image" %>
         <% else %>
-          <!-- Aquí puedes mostrar una imagen predeterminada o algún mensaje indicando que no hay imagen -->
           <%= image_tag "logo_negro.png", class: "card-img-top product-image" %>
         <% end %>
       </a>
@@ -24,3 +33,18 @@
     </div>
   <% end %>
 </div>
+
+<script>
+  function categoryFilter(filter) {
+    let categoryCards = document.getElementsByClassName('card');
+    for (let i = 0; i < categoryCards.length; i++) {
+      let categoryCard = categoryCards[i];
+      let categoryType = categoryCard.getAttribute('data-categories');
+      if (categoryType === filter || filter === 'all') {
+        categoryCard.style.display = 'block';
+      } else {
+        categoryCard.style.display = 'none';
+      }
+    }
+  }
+</script>

@@ -1,13 +1,33 @@
-<div class="nav">
-  <div class="image p-3">
-    <%= image_tag "logo_negro.png" %>
+<% if user_signed_in? %>
+  <div class="nav sign-in">
+    <div class="image p-3">
+      <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" do %>
+        <%= image_tag "logo_blanco.png"%>
+      <% end %>
+    </div>
+    <div class="gender d-flex color-in">
+      <%= link_to products_path(gender: 'lady'), class: "link-lady m-3 text-decoration-none" do %>
+        <p>DAMA</p>
+      <% end %>
+      <%= link_to products_path(gender: 'gentleman'), class: "link-gentleman m-3 text-decoration-none" do %>
+        <p>CABALLERO</p>
+      <% end %>
+    </div>
   </div>
-  <div class="gender d-flex">
-    <%= link_to products_path(gender: 'lady'), class: "link-lady m-3 text-decoration-none" do %>
-      <p>DAMA</p>
-    <% end %>
-    <%= link_to products_path(gender: 'gentleman'), class: "link-gentleman m-3 text-decoration-none" do %>
-      <p>CABALLERO</p>
-    <% end %>
+<% else %>
+  <div class="nav sign-out">
+    <div class="image p-3">
+      <%= link_to new_user_session_path, class: "nav-link" do %>
+        <%= image_tag "logo_negro.png" %>
+      <% end %>
+    </div>
+    <div class="gender d-flex">
+      <%= link_to products_path(gender: 'lady'), class: "link-lady m-3 text-decoration-none" do %>
+        <p>DAMA</p>
+      <% end %>
+      <%= link_to products_path(gender: 'gentleman'), class: "link-gentleman m-3 text-decoration-none" do %>
+        <p>CABALLERO</p>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>

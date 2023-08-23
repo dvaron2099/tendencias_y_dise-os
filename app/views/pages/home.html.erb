@@ -1,2 +1,81 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.05),rgba(0,0,0,0.05)), url(https://res.cloudinary.com/dqwouraji/image/upload/v1687000269/Dise%C3%B1o_sin_t%C3%ADtulo_jg1e3v.png);">
+<div class="banner d-flex justify-content-center align-items-center justify-content-evenly">
+  <% user_photos = User.first.photos %>
+  <%= cl_image_tag user_photos[0].url, class: "banner-image imagen-1" %>
+  <%= cl_image_tag user_photos[1].url, class: "banner-image logo-image" %>
+  <%= cl_image_tag user_photos[2].url, class: "banner-image imagen-2" %>
 </div>
+
+<div class="information-home">
+  <div class="row">
+    <div class="information-content m-5 col-lg-10 col-12">
+      <h3 class="title">¿Quiénes somos?</h3>
+      <p>Somos una empresa ubicada en Cúcuta, especializada en la venta al por mayor y al detal de pantalones para damas y caballeros, así como chalecos exclusivos para mujeres. Nuestra pasión por la moda y la atención a los detalles nos impulsan a ofrecer productos de alta calidad que reflejen tu estilo único y te hagan sentir confiado en cada ocasión. Desde jeans versátiles hasta shorts y bermudas de moda, nuestra amplia gama de opciones te permite expresar tu personalidad a través de tu vestimenta.</p>
+      <a href="https://www.instagram.com/valenhernandez_z/" target="_blank" class="instagram-link">
+        <i class="fab fa-instagram"></i>
+        <p class="siguenos">Síguenos en Instagram</p>
+      </a>
+    </div>
+    <div class="col-lg-2 col-12 d-none d-md-block">
+      <%= cl_image_tag Product.find_by(ref:3353).photos[2].url, class: "side-image", alt: "Side Image" %>
+    </div>
+  </div>
+</div>
+
+<div class="product-initial m-5">
+  <% initial = [] %>
+  <% initial.push(Product.find_by(ref:1802)) %>
+  <% initial.push(Product.find_by(ref:3247)) %>
+  <% initial.push(Product.find_by(ref:3277)) %>
+  <h3 class="m-2" >Productos Destacados</h3>
+  <div class="d-flex flex-wrap justify-content-evenly">
+    <% initial.each do |product| %>
+      <div class="card" style="width: 18rem;" data-categories="<%= product.category.category_type %>">
+        <a href="<%= product_path(product) %>">
+          <% if product.photos.any? %>
+            <%= cl_image_tag product.photos.first.url, class: "card-img-top product-image" %>
+          <% else %>
+            <%= image_tag "logo_negro.png", class: "card-img-top product-image" %>
+          <% end %>
+        </a>
+        <div class="card-body">
+          <h6 class="card-text"><strong><%= product.name %></strong></h6>
+          <div class="price"><%= number_to_currency(product.price, unit: '$', format: '%u%n') %></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%# <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const bannerImages = document.querySelectorAll(".banner-image");
+  const fadeInDuration = 1500; // Duración de la transición al cargar la página (en milisegundos)
+
+  let startTime = null;
+
+  function fadeIn(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const elapsedTime = timestamp - startTime;
+
+    if (elapsedTime < fadeInDuration) {
+      const opacity = elapsedTime / fadeInDuration;
+      bannerImages.forEach(image => {
+        image.style.visibility = "visible"; // Cambiar opacity por visibility
+        image.style.opacity = opacity;
+      });
+      requestAnimationFrame(fadeIn);
+    } else {
+      bannerImages.forEach(image => {
+        image.style.visibility = "visible"; // Cambiar opacity por visibility
+        image.style.opacity = 1;
+      });
+    }
+  }
+
+  requestAnimationFrame(fadeIn);
+
+  // Resto del código para la transición al hacer hover
+});
+
+
+</script> %>

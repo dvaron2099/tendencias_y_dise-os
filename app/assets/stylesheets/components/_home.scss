@@ -1,0 +1,152 @@
+.information-home {
+  background-color: #131313;
+  color: white; /* Color de texto */
+  padding: 30px; /* Ajusta el padding según tus preferencias */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40vh; /* Opcional: centra verticalmente en la ventana */
+}
+
+.information-content {
+  flex: 1; /* Ocupa el espacio restante */
+  text-align: left;
+}
+
+.information-content .title {
+  text-align: left; /* Alinea el título a la izquierda */
+  margin-bottom: 10px; /* Espacio entre el título y el párrafo */
+}
+
+.information-content p {
+  text-align: justify; /* Justifica el texto */
+}
+
+.information-home .side-image {
+  max-width: 150px; /* Limita el ancho de la imagen */
+  height: auto;
+  max-height: 100%; /* Ajusta la altura de la imagen */
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.instagram-link {
+  display: flex;
+  color: #f2f2f2; /* Color de texto gris claro */
+  text-decoration: none;
+}
+
+.instagram-link i {
+  font-size: 30px;
+  margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+
+.instagram-link .siguenos {
+  font-size: 20px; /* Tamaño de fuente más grande */
+}
+
+.instagram-link:hover {
+  color: #5d5d5d; /* Color de texto gris claro */
+}
+
+/* Media query para pantallas con un ancho menor a 940px */
+@media (max-width: 992px) {
+
+  .information-home {
+    margin-top: 0; /* Elimina el margen superior */
+    flex-direction: column; /* Cambia la dirección del flexbox para centrar verticalmente */
+    height: 50vh;
+  }
+}
+
+@media (max-width: 992px) {
+
+  .information-home {
+    margin-top: 0; /* Elimina el margen superior */
+    flex-direction: column; /* Cambia la dirección del flexbox para centrar verticalmente */
+    height: 50vh;
+  }
+}
+
+@media (max-width: 610px) {
+
+  .information-content .title {
+    font-size: 20px; /* Ajusta el tamaño del ícono */
+  }
+
+  .information-content p {
+    font-size: 15px; /* Ajusta el tamaño del ícono */
+  }
+
+  .instagram-link i {
+    font-size: 30px; /* Ajusta el tamaño del ícono */
+  }
+
+  .instagram-link .siguenos {
+    font-size: 20px; /* Ajusta el tamaño del texto "Síguenos en Instagram" */
+  }
+}
+
+@media (max-width: 530px) {
+
+  .information-content .title {
+    font-size: 15px; /* Ajusta el tamaño del ícono */
+  }
+
+  .information-content p {
+    font-size: 13px; /* Ajusta el tamaño del ícono */
+  }
+
+  .instagram-link i {
+    font-size: 27px; /* Ajusta el tamaño del ícono */
+  }
+
+  .instagram-link .siguenos {
+    font-size: 17px; /* Ajusta el tamaño del texto "Síguenos en Instagram" */
+  }
+}
+
+@media (max-width: 418px) {
+
+  .information-content .title {
+    font-size: 13px; /* Ajusta el tamaño del ícono */
+  }
+
+  .information-content p {
+    font-size: 11px; /* Ajusta el tamaño del ícono */
+  }
+
+  .instagram-link i {
+    font-size: 25px; /* Ajusta el tamaño del ícono */
+  }
+
+  .instagram-link .siguenos {
+    font-size: 15px; /* Ajusta el tamaño del texto "Síguenos en Instagram" */
+  }
+}
+
+@media (max-width: 400px) {
+
+  .information-content .title {
+    font-size: 11px; /* Ajusta el tamaño del ícono */
+  }
+
+  .information-content p {
+    font-size: 9px; /* Ajusta el tamaño del ícono */
+  }
+
+  .instagram-link i {
+    font-size: 22px; /* Ajusta el tamaño del ícono */
+  }
+
+  .instagram-link .siguenos {
+    font-size: 12px; /* Ajusta el tamaño del texto "Síguenos en Instagram" */
+  }
+}
+
+@media (max-width: 991px) {
+
+  .information-home .side-image {
+    display: none; /* Ajusta el tamaño del ícono */
+  }
+}
