@@ -1,0 +1,46 @@
+<% if user_signed_in? %>
+  <div class="container shadow mt-3 p-3 w-50">
+    <% if product.new_record? %>
+      <h5 class="text-center">Nuevo Producto</h5>
+    <% else %>
+      <h5 class="text-center">Editar Producto</h5>
+    <% end %>
+    <%= simple_form_for product, html: { multipart: true } do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :price %>
+      <%= f.input :ref %>
+      <%= f.input :availability, collection: ['Disponible', 'No disponible'] %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+
+      <!-- Agregar la entrada para seleccionar el género -->
+      <div class="form-group">
+        <label>Género</label>
+        <%= f.collection_radio_buttons :gender_id, Gender.all, :id, :name %>
+      </div>
+
+      <!-- Agregar la entrada para seleccionar la categoría para dama -->
+      <div class="form-group category-fields lady"> <!-- Para categorías de Dama -->
+        <label>Categorías para Dama</label>
+        <%= f.collection_select :category_id, Category.where(gender_id: Gender.find_by(name: 'Dama').id), :id, :category_type %>
+      </div>
+
+      <!-- Agregar la entrada para seleccionar la categoría para caballero -->
+      <div class="form-group category-fields gentleman"> <!-- Para categorías de Caballero -->
+        <label>Categoría para Caballero</label>
+        <%= f.collection_select :category_id, Category.where(gender_id: Gender.find_by(name: 'Caballero').id), :id, :category_type %>
+      </div>
+
+      <%= f.collection_check_boxes :color_ids, Color.all, :id, :name %>
+      <br>
+      <%= f.collection_check_boxes :size_ids, Size.all, :id, :measure %>
+      <div class="row d-flex justify-content-center">
+        <div class="col-2">
+          <%= f.submit product.new_record? ? "Crear" : "Actualizar", class: "btn btn-success" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <h1 class="text-center">Solo los propietarios pueden crear nuevos productos.</h1>
+<% end %>

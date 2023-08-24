@@ -13,26 +13,37 @@
       <li class="filter m-1" onclick="categoryFilter('<%= category.category_type %>')"><%= category.category_type %></li>
     <% end %>
     <li class="filter m-1" onclick="categoryFilter('all')">Todos los Productos</li>
+    <% if user_signed_in? %>
+      <%= link_to new_product_path, class: "btn btn-link p-0" do %>
+        <li class="btn btn-primary m-1 ">Nuevo producto</li>
+      <% end %>
+    <% end %>
   </ul>
 </div>
 
 <div class="products d-flex flex-wrap justify-content-center">
   <% @products.each do |product| %>
-    <div class="card" style="width: 18rem;" data-categories="<%= product.category.category_type %>">
-      <a href="<%= product_path(product) %>">
-        <% if product.photos.any? %>
-          <%= cl_image_tag product.photos.first.url, class: "card-img-top product-image" %>
-        <% else %>
-          <%= image_tag "logo_negro.png", class: "card-img-top product-image" %>
-        <% end %>
-      </a>
-      <div class="card-body">
-        <h6 class="card-text"><strong><%= product.name %></strong></h6>
-        <div class="price"><%= number_to_currency(product.price, unit: '$', format: '%u%n') %></div>
+    <% if user_signed_in? || product.availability == "Disponible" %>
+      <div class="card" style="width: 18rem;" data-categories="<%= product.category.category_type %>">
+        <a href="<%= product_path(product) %>">
+          <% if product.photos.any? %>
+            <%= cl_image_tag product.photos.first.url, class: "card-img-top product-image" %>
+          <% else %>
+            <%= image_tag "logo_negro.png", class: "card-img-top product-image" %>
+          <% end %>
+        </a>
+        <div class="card-body"style="<%= product.availability == 'No disponible' ? 'background-color: rgb(255, 0, 0);' : '' %>" >
+          <h6 class="card-text"><strong><%= product.name %></strong></h6>
+            <% if product.availability == "No disponible" %>
+              <h6 class="card-text"><%= product.availability %></h6>
+            <% end %>
+          <div class="price"><%= number_to_currency(product.price, unit: '$', format: '%u%n') %></div>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
+
 
 <script>
   function categoryFilter(filter) {

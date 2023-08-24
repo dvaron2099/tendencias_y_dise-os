@@ -73,10 +73,23 @@
     </div>
   </div>
 </div>
-<div class="whatsaap">
-  <a href="https://api.whatsapp.com/send?phone=573232313535&text=<%= CGI.escape("#{product_url(@product)}
-¡Hola! Estoy interesado en el producto: #{@product.name}.
-Puedes brindarme más información?") %>" target="_blank">
-    <i class="fa-brands fa-whatsapp" style="color: black; font-size: 36px;"></i>
-  </a>
+
+<div class="d-flex">
+  <% if user_signed_in? %>
+    <div>
+      <%= link_to "Actualizar", edit_product_path(@product), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <div class="whatsaap">
+    <a href="https://api.whatsapp.com/send?phone=573232313535&text=<%= CGI.escape("#{product_url(@product)}
+  ¡Hola! Estoy interesado en el producto: #{@product.name}.
+  Puedes brindarme más información?") %>" target="_blank">
+      <i class="fa-brands fa-whatsapp" style="color: black; font-size: 36px;"></i>
+    </a>
+  </div>
+  <% if user_signed_in? %>
+    <div>
+      <%= link_to "Eliminar", product_path(@product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
+    </div>
+  <% end %>
 </div>

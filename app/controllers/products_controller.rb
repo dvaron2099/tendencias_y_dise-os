@@ -37,6 +37,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @categories = Category.all # Asegúrate de definir correctamente @categories
   end
 
   def create
@@ -63,7 +64,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
 
-    redirect_to products_path, status: :see_other
+    redirect_to root_path, status: :see_other
   end
 
   private
@@ -73,7 +74,7 @@ class ProductsController < ApplicationController
       :name,
       :description,
       :price,
-      :stock,
+      :ref,
       :availability,
       :gender_id,
       :category_id,
