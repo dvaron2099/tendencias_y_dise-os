@@ -40,41 +40,11 @@
 }
 
 
-/* Estilos para la imagen 1 y 2 con borde difuminado */
+/* Estilos para la imagen 1 y 2 con borde sin difuminado */
 .imagen-1,
 .imagen-2 {
   border-radius: 10px;
   border: 5px solid transparent;
-  filter: blur(5px);
-  transition: filter 0.5s ease-in-out, border-color 0.5s ease-in-out;
-  position: relative; /* Necesario para posicionar el degradado */
-}
-
-/* Agrega un pseudo-elemento para el degradado */
-.imagen-1::before,
-.imagen-2::before {
-  content: "";
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  z-index: -1; /* Coloca el degradado detrás de la imagen */
-  background: linear-gradient(transparent, gray); /* Cambia 'gray' al color que prefieras */
-  opacity: 0; /* Inicialmente invisible */
-  transition: opacity 0.5s ease-in-out; /* Transición suave de opacidad */
-}
-
-/* Al hacer hover sobre las imágenes, quita el difuminado y muestra el degradado */
-.imagen-1:hover,
-.imagen-2:hover {
-  filter: blur(0);
-  border-color: transparent; /* Borde transparente al hacer hover */
-}
-
-.imagen-1:hover::before,
-.imagen-2:hover::before {
-  opacity: 1; /* Muestra el degradado al hacer hover */
 }
 
 /* Estilos para el logo (imagen 2) */

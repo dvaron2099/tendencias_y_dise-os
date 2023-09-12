@@ -22,13 +22,9 @@
 </div>
 
 <div class="product-initial m-5">
-  <% initial = [] %>
-  <% initial.push(Product.find_by(ref:1802)) %>
-  <% initial.push(Product.find_by(ref:3247)) %>
-  <% initial.push(Product.find_by(ref:3277)) %>
   <h3 class="m-2" >Productos Destacados</h3>
   <div class="d-flex flex-wrap justify-content-evenly">
-    <% initial.each do |product| %>
+    <% @initial.each do |product| %>
       <div class="card" style="width: 18rem;" data-categories="<%= product.category.category_type %>">
         <a href="<%= product_path(product) %>">
           <% if product.photos.any? %>
