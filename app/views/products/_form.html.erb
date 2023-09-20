@@ -5,7 +5,7 @@
     <% else %>
       <h5 class="text-center">Editar Producto</h5>
     <% end %>
-    <%= simple_form_for product, html: { multipart: true } do |f| %>
+    <%= simple_form_for product, html: { multipart: true, id: "product_form" } do |f| %>
       <%= f.input :name %>
       <%= f.input :description %>
       <%= f.input :price %>
@@ -15,25 +15,46 @@
 
       <!-- Agregar la entrada para seleccionar el género -->
       <div class="form-group">
-        <label>Género</label>
+        <label>Género</label><br>
         <%= f.collection_radio_buttons :gender_id, Gender.all, :id, :name %>
       </div>
 
       <!-- Agregar la entrada para seleccionar la categoría para dama -->
       <div class="form-group category-fields lady"> <!-- Para categorías de Dama -->
-        <label>Categorías para Dama</label>
+        <label>Categorías para Dama</label><br>
         <%= f.collection_select :category_id, Category.where(gender_id: Gender.find_by(name: 'Dama').id), :id, :category_type %>
       </div>
 
       <!-- Agregar la entrada para seleccionar la categoría para caballero -->
       <div class="form-group category-fields gentleman"> <!-- Para categorías de Caballero -->
-        <label>Categoría para Caballero</label>
+        <label>Categoría para Caballero</label><br>
         <%= f.collection_select :category_id, Category.where(gender_id: Gender.find_by(name: 'Caballero').id), :id, :category_type %>
       </div>
 
-      <%= f.collection_check_boxes :color_ids, Color.all, :id, :name %>
+      <div class="form-group">
+        <label>Colores</label>
+        <div class="btn-group-toggle" data-toggle="buttons">
+          <% @colors.each do |color| %>
+            <% text_color = ["Negro", "Azul marino", "Verde Oliva"].include?(color.name) ? "white" : "black" %>
+            <label class="btn btn-outline-primary m-2" style="background-color: <%= color.hex_code %>; color: <%= text_color %>">
+              <%= f.check_box :color_ids, { multiple: true }, color.id, nil %>
+              <%= color.name %>
+            </label>
+          <% end %>
+        </div>
+      </div>
       <br>
-      <%= f.collection_check_boxes :size_ids, Size.all, :id, :measure %>
+      <label>Tallas</label>
+      <div class="form-group d-flex flex-wrap">
+        <%= f.collection_check_boxes :size_ids, Size.all, :id, :measure do |b| %>
+          <div class="form-check mb-2 mr-2">
+            <%= b.check_box class: "form-check-input" %>
+            <%= b.label class: "form-check-label" %>
+          </div>
+        <% end %>
+      </div>
+
+
       <div class="row d-flex justify-content-center">
         <div class="col-2">
           <%= f.submit product.new_record? ? "Crear" : "Actualizar", class: "btn btn-success" %>
