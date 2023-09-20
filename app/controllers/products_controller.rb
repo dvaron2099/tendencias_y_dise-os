@@ -36,6 +36,7 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @colors = Color.all
     @product = Product.new
     @categories = Category.all # Asegúrate de definir correctamente @categories
   end
@@ -51,9 +52,11 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @colors = Color.all
   end
 
   def update
+    @colors = Color.all
     if @product.update(product_params)
       redirect_to product_path(@product)
     else
