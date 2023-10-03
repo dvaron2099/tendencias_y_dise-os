@@ -81,6 +81,8 @@ class ProductsController < ApplicationController
       :availability,
       :gender_id,
       :category_id,
+      :wholesale_price,
+      :quantity,
       photos: [],
       color_ids: [],   # Para permitir múltiples colores asociados
       size_ids: []     # Para permitir múltiples tallas asociadas

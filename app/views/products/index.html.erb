@@ -10,7 +10,13 @@
 <div class="categories-bar justify-content-center">
   <ul class="d-flex filter-list list-unstyled flex-wrap justify-content-center">
     <% @categories.each do |category| %>
-      <li class="filter m-1" onclick="categoryFilter('<%= category.category_type %>')"><%= category.category_type %></li>
+      <% if category.products.where(availability: 'Disponible').exists? %>
+        <% words = category.category_type.split(' ') %>
+        <% truncated_category = words[0..-2].join(' ') %>
+        <li class="filter m-1" onclick="categoryFilter('<%= category.category_type %>')">
+          <%= truncated_category %>
+        </li>
+      <% end %>
     <% end %>
     <li class="filter m-1" onclick="categoryFilter('all')">Todos los Productos</li>
     <% if user_signed_in? %>
@@ -20,6 +26,7 @@
     <% end %>
   </ul>
 </div>
+
 
 <div class="products d-flex flex-wrap justify-content-center">
   <% @products.each do |product| %>

@@ -47,8 +47,8 @@
         <h5 class="card-title mb-1"><strong><%= @product.name %> </strong></h5>
         <hr class="border-dark">
         <p class="card-text mb-2"><%= @product.description %></p>
-        <p class="card-text mb-2"><%= number_to_currency(@product.price, unit: '$', format: '%u%n') %></p>
-        <p class="card-text mb-2"><%= @product.category.category_type %></p>
+        <p class="card-text mb-2">Precio unitario: <%= number_to_currency(@product.price, unit: '$', format: '%u%n') %></p>
+        <p class="card-text mb-2">Precio a partir de <%= @product.quantity %> unidades: <%= number_to_currency(@product.wholesale_price, unit: '$', format: '%u%n') %></p>
         <p class="card-text mb-2">Disponible en las siguientes Tallas</p>
         <div class="card-text mb-2">
           <% @product.sizes.each do |size| %>
@@ -82,8 +82,8 @@
   <% end %>
   <div class="whatsaap">
     <a href="https://api.whatsapp.com/send?phone=573232313535&text=<%= CGI.escape("#{product_url(@product)}
-  ¡Hola! Estoy interesado en el producto: #{@product.name}.
-  Puedes brindarme más información?") %>" target="_blank">
+¡Hola! Estoy interesado en el producto: #{@product.name}.
+Puedes brindarme más información?") %>" target="_blank">
       <i class="fa-brands fa-whatsapp" style="color: black; font-size: 36px;"></i>
     </a>
   </div>

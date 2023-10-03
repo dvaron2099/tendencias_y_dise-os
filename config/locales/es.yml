@@ -1,0 +1,32 @@
+# config/locales/es.yml
+
+es:
+  # Traducciones para Devise
+  devise:
+    registrations:
+      signed_up: 'Registro exitoso. Por favor, inicia sesión.'
+      signed_up_but_inactive: 'Tu cuenta ha sido creada pero está pendiente de activación. Por favor, revisa tu correo electrónico.'
+
+    sessions:
+      signed_in: 'Has iniciado sesión correctamente.'
+
+
+  # Traducciones para Simple Form
+  simple_form:
+    labels:
+      product:
+        name: Nombre
+        description: Descripción
+        price: Precio unitario
+        quantity: Cantidad al por mayor
+        wholesale_price: Precio al por mayor
+        ref: Referencia
+        availability: Disponibilidad
+    placeholders:
+      product:
+        name: Ingrese el nombre
+        description: Ingrese la descripción
+        price: Ingrese el precio unitario
+        quantity: Ingrese la cantidad
+        wholesale_price: Ingrese el precio al por mayor
+        ref: Ingrese la referencia

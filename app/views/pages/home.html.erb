@@ -7,21 +7,17 @@
 
 <div class="information-home">
   <div class="row">
-    <div class="information-content m-5 col-lg-10 col-12">
+    <div class="information-content m-2 col-lg-10 col-12">
       <h3 class="title">¿Quiénes somos?</h3>
       <p>Somos una empresa ubicada en Cúcuta, especializada en la venta al por mayor y al detal de pantalones para damas y caballeros, así como chalecos exclusivos para mujeres. Nuestra pasión por la moda y la atención a los detalles nos impulsan a ofrecer productos de alta calidad que reflejen tu estilo único y te hagan sentir confiado en cada ocasión. Desde jeans versátiles hasta shorts y bermudas de moda, nuestra amplia gama de opciones te permite expresar tu personalidad a través de tu vestimenta.</p>
-      <a href="https://www.instagram.com/tyd_jeans/" target="_blank" class="instagram-link">
-        <i class="fab fa-instagram"></i>
-        <p class="siguenos">Síguenos en Instagram</p>
-      </a>
     </div>
     <div class="col-lg-2 col-12 d-none d-md-block">
-      <%= cl_image_tag Product.find_by(ref:3386).photos[1].url, class: "side-image", alt: "Side Image" %>
+      <%= cl_image_tag User.first.photos[3].url, class: "banner-image imagen-2 side-image" %>
     </div>
   </div>
 </div>
 
-<div class="product-initial m-5">
+<div class="product-initial p-5">
   <h3 class="m-2" >Productos Destacados</h3>
   <div class="d-flex flex-wrap justify-content-evenly">
     <% @initial.each do |product| %>
@@ -42,36 +38,32 @@
   </div>
 </div>
 
-<%# <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const bannerImages = document.querySelectorAll(".banner-image");
-  const fadeInDuration = 1500; // Duración de la transición al cargar la página (en milisegundos)
+<div class="questions p-5">
+  <h1 class="question py-3">Preguntas Frecuentes</h1>
+  <h1 class="valor py-4">¿QUÉ VALOR TIENE EL ENVÍO?</h1>
+  <p>el precio del envío depende de la ciudad el número de prendas. manejamos contraentrega (Servientrega, interrapidisimo y envía).</p>
+  <br>
+  <h1 class="valor py-4">¿CUÁNTO TIEMPO TARDA EN LLEGAR MI PEDIDO?</h1>
+  <p class="delivery">Los pedidos tardan en llegar entre 3 y 8 días fuera de Cúcuta.</p>
 
-  let startTime = null;
+  <!-- Barra separadora -->
+  <div class="separator"></div>
 
-  function fadeIn(timestamp) {
-    if (!startTime) startTime = timestamp;
-    const elapsedTime = timestamp - startTime;
-
-    if (elapsedTime < fadeInDuration) {
-      const opacity = elapsedTime / fadeInDuration;
-      bannerImages.forEach(image => {
-        image.style.visibility = "visible"; // Cambiar opacity por visibility
-        image.style.opacity = opacity;
-      });
-      requestAnimationFrame(fadeIn);
-    } else {
-      bannerImages.forEach(image => {
-        image.style.visibility = "visible"; // Cambiar opacity por visibility
-        image.style.opacity = 1;
-      });
-    }
-  }
-
-  requestAnimationFrame(fadeIn);
-
-  // Resto del código para la transición al hacer hover
-});
-
-
-</script> %>
+  <!-- Contenedor de los enlaces centrados -->
+  <div class="links-container">
+    <a href="https://www.instagram.com/tyd_jeans/" target="_blank" class="instagram-link">
+      <i class="fab fa-instagram"></i>
+      <p class="siguenos">Síguenos en Instagram</p>
+    </a>
+    <a href="https://api.whatsapp.com/send?phone=573232313535&text=<%= CGI.escape("¡Hola! Estoy interesado en el producto:.
+Puedes brindarme más información?") %>" target="_blank" class="instagram-link">
+      <i class="fa-brands fa-whatsapp"></i>
+      <p class="siguenos">+57 315 512 7016 | Ventas</p>
+    </a>
+    <a href="https://api.whatsapp.com/send?phone=573232313535&text=<%= CGI.escape("¡Hola! Estoy interesado en el producto:.
+Puedes brindarme más información?") %>" target="_blank" class="instagram-link">
+      <i class="fa-brands fa-whatsapp"></i>
+      <p class="siguenos">+57 300 423 3454 | Gerencia</p>
+    </a>
+  </div>
+</div>

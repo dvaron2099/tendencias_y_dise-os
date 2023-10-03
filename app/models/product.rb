@@ -8,4 +8,5 @@ class Product < ApplicationRecord
   has_many :product_colors, dependent: :destroy
   has_many :colors, through: :product_colors
   has_many_attached :photos
+
 end
