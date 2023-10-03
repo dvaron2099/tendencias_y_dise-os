@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
   database: tendencias_y_diseños_production
   username: tendencias_y_diseños
   password: <%= ENV["TENDENCIAS_Y_DISEÑOS_DATABASE_PASSWORD"] %>
