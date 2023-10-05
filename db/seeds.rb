@@ -2159,7 +2159,7 @@ product_59 = Product.create(
   ref: 3347,
   availability: "Disponible",
   gender_id: lady.id,
-  category_id: pantalon_drill_lady.id
+  category_id: cargo_lady.id
 )
 
 # # Asocia los colores con el producto
@@ -2182,7 +2182,7 @@ product_60 = Product.create(
   ref: 3369,
   availability: "Disponible",
   gender_id: lady.id,
-  category_id: pantalon_drill_lady.id
+  category_id: cargo_lady.id
 )
 
 # # Asocia los colores con el producto
@@ -2215,7 +2215,7 @@ product_61 = Product.create(
   ref: 3369,
   availability: "Disponible",
   gender_id: lady.id,
-  category_id: pantalon_drill_lady.id
+  category_id: cargo_lady.id
 )
 
 # # Asocia los colores con el producto
@@ -2248,7 +2248,7 @@ product_62 = Product.create(
   ref: 3369,
   availability: "Disponible",
   gender_id: lady.id,
-  category_id: pantalon_drill_lady.id
+  category_id: cargo_lady.id
 )
 
 # # Asocia los colores con el producto
@@ -2280,7 +2280,7 @@ product_63 = Product.create(
   ref: 3369,
   availability: "Disponible",
   gender_id: lady.id,
-  category_id: pantalon_drill_lady.id
+  category_id: cargo_lady.id
 )
 
 # # Asocia los colores con el producto
