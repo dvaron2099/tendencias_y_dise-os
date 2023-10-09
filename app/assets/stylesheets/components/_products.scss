@@ -29,11 +29,19 @@
   z-index: 10;
 }
 
+
+
 .card:hover .product-image {
   transform: scale(1.1); /* Ajusta el valor según lo desees */
   /* z-index: -1; */ /* No es necesario tener un z-index negativo en .product-image:hover */
 }
 
+@media (max-width: 500px) {
+  .filter {
+    width: 100px; /* Reduce el espacio interior */
+    font-size: 12px;
+  }
+}
 // z|
 
 

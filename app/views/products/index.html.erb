@@ -21,7 +21,7 @@
     <li class="filter m-1" onclick="categoryFilter('all')">Todos los Productos</li>
     <% if user_signed_in? %>
       <%= link_to new_product_path, class: "btn btn-link p-0" do %>
-        <li class="btn btn-primary m-1 ">Nuevo producto</li>
+        <li class="btn btn-primary m-1 filter ">Nuevo producto</li>
       <% end %>
     <% end %>
   </ul>
