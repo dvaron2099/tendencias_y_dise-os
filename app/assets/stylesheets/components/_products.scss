@@ -1,23 +1,25 @@
 .products {
-  gap: 20px;
-  background-color: #f5f5f5;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 15px;
   padding: 20px;
   transition: transform 0.3s ease-in-out;
   /* z-index: -1; */ /* No es necesario tener un z-index negativo en .products */
 }
 
 .card {
-  background-color: #fff;
+//   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
-  margin: 10px; /* Margen entre las tarjetas */
+//   margin: 10px; /* Margen entre las tarjetas */
 }
 
 .product-image {
   width: 100%;
-  height: 400px;
+  height: 300px;
   object-fit: cover;
   transition: transform 0.3s ease-in-out;
 }
@@ -38,16 +40,16 @@
 
 @media (max-width: 500px) {
   .filter {
-    width: 100px; /* Reduce el espacio interior */
+    width: 80px; /* Reduce el espacio interior */
     font-size: 12px;
   }
+  .products {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
 }
-// z|
-
-
-// .product {
-//   background-color: #ffffff;
-// }
 
 /* Agrega estos estilos al CSS de tu página */
 .carousel-control-prev-icon,

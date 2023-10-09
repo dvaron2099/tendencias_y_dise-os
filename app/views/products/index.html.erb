@@ -28,8 +28,7 @@
 </div>
 
 
-
-<div class="products d-flex flex-wrap justify-content-center">
+<div class="products">
   <% @products.each do |product| %>
     <% if user_signed_in? || product.availability == "Disponible" %>
       <div class="card" data-categories="<%= product.category.category_type %>">
