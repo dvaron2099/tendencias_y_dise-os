@@ -11,18 +11,8 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   overflow: hidden;
-  position: relative; /* Añade esta propiedad para permitir el posicionamiento de elementos internos */
-}
-
-@media (max-width: 590px) {
-  .card {
-    flex-basis: calc(50% - 20px); /* Controla el tamaño de las tarjetas en pantallas pequeñas */
-    font-size: 10px; /* Ajusta el tamaño de la fuente para pantallas pequeñas */
-    /* Puedes agregar otros estilos según tus necesidades */
-    .name {
-      font-size: 13px;
-    }
-  }
+  position: relative;
+  margin: 10px; /* Margen entre las tarjetas */
 }
 
 .product-image {
@@ -43,6 +33,8 @@
   transform: scale(1.1); /* Ajusta el valor según lo desees */
   /* z-index: -1; */ /* No es necesario tener un z-index negativo en .product-image:hover */
 }
+
+// z|
 
 
 // .product {

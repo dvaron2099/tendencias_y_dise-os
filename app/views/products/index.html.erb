@@ -40,11 +40,11 @@
             <%= image_tag "logo_negro.png", class: "card-img-top product-image" %>
           <% end %>
         </a>
-        <div class="card-body"style="<%= product.availability == 'No disponible' ? 'background-color: rgb(255, 0, 0);' : '' %>" >
+        <div class="card-body" style="<%= product.availability == 'No disponible' ? 'background-color: rgb(255, 0, 0);' : '' %>" >
           <h6 class="card-text name"><strong><%= product.name %></strong></h6>
-            <% if product.availability == "No disponible" %>
-              <h6 class="card-text"><%= product.availability %></h6>
-            <% end %>
+          <% if product.availability == "No disponible" %>
+            <h6 class="card-text"><%= product.availability %></h6>
+          <% end %>
           <div class="price"><%= number_to_currency(product.price, unit: '$', format: '%u%n') %></div>
         </div>
       </div>
