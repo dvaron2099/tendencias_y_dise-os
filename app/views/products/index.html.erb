@@ -28,10 +28,11 @@
 </div>
 
 
+
 <div class="products d-flex flex-wrap justify-content-center">
   <% @products.each do |product| %>
     <% if user_signed_in? || product.availability == "Disponible" %>
-      <div class="card" style="width: 18rem;" data-categories="<%= product.category.category_type %>">
+      <div class="card" data-categories="<%= product.category.category_type %>">
         <a href="<%= product_path(product) %>">
           <% if product.photos.any? %>
             <%= cl_image_tag product.photos.first.url, class: "card-img-top product-image" %>
@@ -40,7 +41,7 @@
           <% end %>
         </a>
         <div class="card-body"style="<%= product.availability == 'No disponible' ? 'background-color: rgb(255, 0, 0);' : '' %>" >
-          <h6 class="card-text"><strong><%= product.name %></strong></h6>
+          <h6 class="card-text name"><strong><%= product.name %></strong></h6>
             <% if product.availability == "No disponible" %>
               <h6 class="card-text"><%= product.availability %></h6>
             <% end %>
@@ -50,7 +51,6 @@
     <% end %>
   <% end %>
 </div>
-
 
 <script>
   function categoryFilter(filter) {

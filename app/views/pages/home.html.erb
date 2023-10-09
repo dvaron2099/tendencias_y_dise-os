@@ -5,17 +5,7 @@
   <%= cl_image_tag user_photos[2].url, class: "banner-image imagen-2" %>
 </div>
 
-<div class="information-home">
-  <div class="row">
-    <div class="information-content m-2 col-lg-10 col-12">
-      <h3 class="title">¿Quiénes somos?</h3>
-      <p>Somos una empresa ubicada en Cúcuta, especializada en la venta al por mayor y al detal de pantalones para damas y caballeros, así como chalecos exclusivos para mujeres. Nuestra pasión por la moda y la atención a los detalles nos impulsan a ofrecer productos de alta calidad que reflejen tu estilo único y te hagan sentir confiado en cada ocasión. Desde jeans versátiles hasta shorts y bermudas de moda, nuestra amplia gama de opciones te permite expresar tu personalidad a través de tu vestimenta.</p>
-    </div>
-    <div class="col-lg-2 col-12 d-none d-md-block">
-      <%= cl_image_tag User.first.photos[3].url, class: "banner-image imagen-2 side-image" %>
-    </div>
-  </div>
-</div>
+
 
 <div class="product-initial p-5">
   <h3 class="m-2" >Productos Destacados</h3>
@@ -53,17 +43,38 @@
   <div class="links-container">
     <a href="https://www.instagram.com/tyd_jeans/" target="_blank" class="instagram-link">
       <i class="fab fa-instagram"></i>
-      <p class="siguenos">Síguenos en Instagram</p>
+      <p class="siguenos">@tyd_jeans</p>
     </a>
-    <a href="https://api.whatsapp.com/send?phone=573155217016&text=<%= CGI.escape("¡Hola! Estoy interesado en el producto:.
-Puedes brindarme más información?") %>" target="_blank" class="instagram-link">
+    <a href="https://api.whatsapp.com/send?phone=573155217016&text=<%= CGI.escape("Hola, somos TYD. ¿En qué podemos asesorarte?") %>" target="_blank" class="instagram-link">
       <i class="fa-brands fa-whatsapp"></i>
       <p class="siguenos">+57 315 512 7016 | Ventas</p>
     </a>
-    <a href="https://api.whatsapp.com/send?phone=573004233454&text=<%= CGI.escape("¡Hola! Estoy interesado en el producto:.
-Puedes brindarme más información?") %>" target="_blank" class="instagram-link">
+    <a href="https://api.whatsapp.com/send?phone=573004233454&text=<%= CGI.escape("Hola, somos TYD. ¿En qué podemos asesorarte?") %>" target="_blank" class="instagram-link">
       <i class="fa-brands fa-whatsapp"></i>
       <p class="siguenos">+57 300 423 3454 | Gerencia</p>
     </a>
+    <% if user_signed_in? %>
+      <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "instagram-link" do %>
+        <i class="fa-regular fa-user"></i>
+        <p class="siguenos">Cerrar sesion</p>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path, class: "instagram-link" do %>
+        <i class="fa-regular fa-user"></i>
+        <p class="siguenos">Eres propietario?</p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="information-home">
+  <div class="row">
+    <div class="information-content m-2 col-lg-10 col-12">
+      <h3 class="title">¿Quiénes somos?</h3>
+      <p>Somos una empresa ubicada en Cúcuta, especializada en la venta al por mayor y al detal de pantalones para damas y caballeros, así como chalecos exclusivos para mujeres. Nuestra pasión por la moda y la atención a los detalles nos impulsan a ofrecer productos de alta calidad que reflejen tu estilo único y te hagan sentir confiado en cada ocasión. Desde jeans versátiles hasta shorts y bermudas de moda, nuestra amplia gama de opciones te permite expresar tu personalidad a través de tu vestimenta.</p>
+    </div>
+    <div class="col-lg-2 col-12 d-none d-md-block">
+      <%= cl_image_tag User.first.photos[3].url, class: "banner-image imagen-2 side-image" %>
+    </div>
   </div>
 </div>
