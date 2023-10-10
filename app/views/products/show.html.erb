@@ -84,7 +84,7 @@
     <a href="https://api.whatsapp.com/send?phone=573155127061&text=<%= CGI.escape("#{product_url(@product)}
 ¡Hola! Estoy interesado en el producto: #{@product.name}.
 Puedes brindarme más información?") %>" target="_blank">
-      <i class="fa-brands fa-whatsapp" style="color: black; font-size: 36px;"></i>
+      <button type="button" class="btn btn-dark"><i class="fa-brands fa-whatsapp" style="color: #ffffff;"></i> ¡Contactanos para Comprar!</button>
     </a>
   </div>
   <% if user_signed_in? %>
