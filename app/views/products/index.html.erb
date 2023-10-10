@@ -8,24 +8,29 @@
 </div>
 
 <div class="categories-bar justify-content-center">
-  <ul class="d-flex filter-list list-unstyled flex-wrap justify-content-center">
-    <% @categories.each do |category| %>
-      <% if category.products.where(availability: 'Disponible').exists? %>
-        <% words = category.category_type.split(' ') %>
-        <% truncated_category = words[0..-2].join(' ') %>
-        <li class="filter m-1" onclick="categoryFilter('<%= category.category_type %>')">
-          <%= truncated_category %>
-        </li>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Categorías
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+      <% @categories.each do |category| %>
+        <% if category.products.where(availability: 'Disponible').exists? %>
+          <% words = category.category_type.split(' ') %>
+          <% truncated_category = words[0..-2].join(' ') %>
+          <li class="dropdown-item" onclick="categoryFilter('<%= category.category_type %>')"><%= truncated_category %></li>
+        <% end %>
       <% end %>
-    <% end %>
-    <li class="filter m-1" onclick="categoryFilter('all')">Todos los Productos</li>
-    <% if user_signed_in? %>
-      <%= link_to new_product_path, class: "btn btn-link p-0" do %>
-        <li class="btn btn-primary m-1 filter ">Nuevo producto</li>
+      <li><hr class="dropdown-divider"></li>
+      <li class="dropdown-item" onclick="categoryFilter('all')">Todos los Productos</li>
+      <% if user_signed_in? %>
+        <%= link_to new_product_path, class: "btn btn-link p-0" do %>
+          <li class="dropdown-item">Nuevo producto</li>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
+  </div>
 </div>
+
 
 
 <div class="products">
