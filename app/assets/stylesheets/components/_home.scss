@@ -56,21 +56,6 @@
   }
 }
 
-@media (max-width: 500px) {
-  .product-initial {
-    .featured {
-      display: none;
-    }
-    .small {
-      display: grid;
-      grid-template-rows: repeat(2, 1fr);
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-  }
-}
-
-
 .questions {
   background-color: #f4f4f4;
   font-family: 'Lora', serif;
@@ -112,6 +97,41 @@
     align-items: center;
   }
 }
+
+@media (max-width: 500px) {
+  .product-initial {
+      height: 500px;
+    .title {
+      font-size: 20px;
+    }
+    .featured {
+      display: none;
+    }
+    .small {
+      display: grid;
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .small .card-text {
+      font-size: 10px;
+    }
+    .small .price {
+      font-size: 10px;
+    }
+  }
+  .questions {
+    h1 {
+      font-size: 20px;
+    }
+
+    p {
+      font-size: 15px;
+    }
+  }
+}
+
+
 
 .instagram-link {
   display: flex;
