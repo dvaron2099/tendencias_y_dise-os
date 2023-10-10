@@ -21,8 +21,8 @@ Size.destroy_all
 
 puts "Creando Usuario Administrador"
 user = User.create(
-  email: 'admin@gmail.com',
-  password: "123456",
+  email: 'tendenciasydisenos322@gmail.com',
+  password: "Valen2001*",
 )
 puts ""
 puts ""
