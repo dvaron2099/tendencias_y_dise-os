@@ -26,6 +26,23 @@
       </div>
     <% end %>
   </div>
+    <div class="small">
+    <% @first_two_products.each do |product| %>
+      <div class="card" data-categories="<%= product.category.category_type %>">
+        <a href="<%= product_path(product) %>">
+          <% if product.photos.any? %>
+            <%= cl_image_tag product.photos.first.url, class: "card-img-top product-image" %>
+          <% else %>
+            <%= image_tag "logo_negro.png", class: "card-img-top product-image" %>
+          <% end %>
+        </a>
+        <div class="card-body">
+          <h6 class="card-text"><strong><%= product.name %></strong></h6>
+          <div class="price"><%= number_to_currency(product.price, unit: '$', format: '%u%n') %></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <div class="questions p-5">
