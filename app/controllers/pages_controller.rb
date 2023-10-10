@@ -4,7 +4,7 @@ class PagesController < ApplicationController
     available_products = Product.where(availability: "Disponible")
 
     # Obtén 3 productos aleatorios de los disponibles.
-    random_products = available_products.sample(3)
+    random_products = available_products.sample(4)
 
     # Asigna los productos aleatorios a la variable @initial para que estén disponibles en la vista.
     @initial = random_products

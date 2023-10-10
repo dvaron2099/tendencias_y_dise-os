@@ -7,11 +7,11 @@
 
 
 
-<div class="product-initial p-5">
+<div class="product-initial">
   <h3 class="m-2" >Productos Destacados</h3>
-  <div class="d-flex flex-wrap justify-content-evenly">
+  <div class="featured">
     <% @initial.each do |product| %>
-      <div class="card" style="width: 18rem;" data-categories="<%= product.category.category_type %>">
+      <div class="card" data-categories="<%= product.category.category_type %>">
         <a href="<%= product_path(product) %>">
           <% if product.photos.any? %>
             <%= cl_image_tag product.photos.first.url, class: "card-img-top product-image" %>
